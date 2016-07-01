@@ -122,14 +122,13 @@ h1 {
 input[type=button] {
 	background: transparent url(images/reset.png) top center no-repeat;
 	background-size: 85%;
-	height: 100px;
+	height: 65px;
 	border: 0;
 	color: transparent;
 }
 .reset-button:hover, .reset-button:active {
 	background: url(images/reset-hover.png) top center no-repeat;
 	background-size: 85%;
-	height: 100px;
 }
 .reset-button:active {
 	background-image: url(images/reset-click-darker4.png);
