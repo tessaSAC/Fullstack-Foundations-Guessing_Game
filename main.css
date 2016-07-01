@@ -78,7 +78,12 @@ h1 {
 	direction: ltr;
 	text-indent: -99999px;
 }
-.hands {
+
+.left-hand, .right-hand {
 	width: 25%;
-	height: 100%;
+	display: inline-block;
+	position: absolute;
+}
+.right-hand {
+	left: 75%;
 }
