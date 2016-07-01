@@ -92,12 +92,24 @@ h1 {
 	text-indent: -99999px;
 }
 
-.left-hand, .right-hand {
-	display: inline-block;
+.left-hand {
 	position: absolute;
+	height: 87%;
+	width: 25%;
+	top: 10%;
+	left: 5%;
+	background: transparent url(images/hand-left.png) bottom center no-repeat;
+	background-size: contain;
+	color: transparent;
 }
 .right-hand {
-	left: 75%;
+	position: absolute;
+	height: 87%;
+	width: 25%;
+	left: 72%;
+	background: transparent url(images/hand-right.png) center center no-repeat;
+	background-size: contain;
+	color: transparent;
 }
 
 .reset-button {
@@ -120,7 +132,7 @@ input[type=button] {
 	height: 100px;
 }
 .reset-button:active {
-	background-image: url(images/reset-click-darker.png);
+	background-image: url(images/reset-click-darker4.png);
 }
 
 .guessbox {
