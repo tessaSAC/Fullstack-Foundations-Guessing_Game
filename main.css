@@ -75,6 +75,8 @@ h1 {
 	background: transparent url(images/triangle-hot.png) center center no-repeat;
 	background-size: contain;
 	z-index: 1;
+	direction: ltr;
+	text-indent: -99999px;
 }
 
 .eightball {
