@@ -44,7 +44,7 @@ table {
 
 
 
-
+/* Is there a base term for script fonts? */
 body {
 	background-color:  #1d1339;
 	font: normal normal 32px/38px Arizonia, Merienda, "Great Vibes", sans-serif;
@@ -66,6 +66,7 @@ h1 {
 	text-align: center;
 }
 
+/* Eventually change from 3 hint images to sprite? Add animation??? */
 .hint {
 	width: 10%;
 	height: 10%;
@@ -79,6 +80,7 @@ h1 {
 	text-indent: -99999px;
 }
 
+/* Why couldn't I get following three divs to stand on the same line, esp. hands (+ originally they shared a class...)*/
 .eightball {
 	width: 50%;
 	height: 60%;
@@ -112,6 +114,10 @@ h1 {
 	color: transparent;
 }
 
+/*
+-> In the future would like to have the below pseudostates affect an .eightball BG sprite...
+-> Why is it so difficult to set the button height???
+*/
 .reset-button {
 	width: 14%;
 	position: absolute;
