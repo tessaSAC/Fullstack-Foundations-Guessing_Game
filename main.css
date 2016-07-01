@@ -120,7 +120,7 @@ input[type=button] {
 	height: 100px;
 }
 .reset-button:active {
-	background-image: url(images/reset-click.png);
+	background-image: url(images/reset-click-darker.png);
 }
 
 .guessbox {
