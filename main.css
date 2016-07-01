@@ -86,14 +86,13 @@ h1 {
 	position: absolute;
 	top: 19%;
 	left: 25%;
-	background: transparent url(images/8ball.png) center center no-repeat;
+	background: transparent url(images/8ball-textless.png) center center no-repeat;
 	background-size: contain;
 	direction: ltr;
 	text-indent: -99999px;
 }
 
 .left-hand, .right-hand {
-	width: 25%;
 	display: inline-block;
 	position: absolute;
 }
@@ -103,17 +102,25 @@ h1 {
 
 .reset-button {
 	width: 14%;
-	height: 10%;
 	position: absolute;
 	overflow: hidden;
-	top: 64%;
+	top: 65%;
 	left: 43%;
 }
 input[type=button] {
-	background-color: transparent;
-	border: 0;
+	background: transparent url(images/reset.png) top center no-repeat;
+	background-size: 85%;
 	height: 100px;
+	border: 0;
 	color: transparent;
+}
+.reset-button:hover, .reset-button:active {
+	background: url(images/reset-hover.png) top center no-repeat;
+	background-size: 85%;
+	height: 100px;
+}
+.reset-button:active {
+	background-image: url(images/reset-click.png);
 }
 
 .guessbox {
