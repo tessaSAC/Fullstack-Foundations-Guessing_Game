@@ -84,7 +84,7 @@ h1 {
 	height: 60%;
 	overflow: hidden;
 	position: absolute;
-	top: 20%;
+	top: 19%;
 	left: 25%;
 	background: transparent url(images/8ball.png) center center no-repeat;
 	background-size: contain;
@@ -99,4 +99,31 @@ h1 {
 }
 .right-hand {
 	left: 75%;
+}
+
+.guessbox {
+	width: 20%;
+	height: 20%;
+	position: absolute;
+	left: 40%;
+	top: 82%;
+}
+label, input {
+	display: block;
+}
+label {
+	margin-bottom: 7%;
+	text-align: center;
+}
+input {
+	width: 100%;
+	margin-bottom: 3%;
+}
+input[type=textarea] {
+	padding: 2%;
+}
+input[type=submit] {
+	width: 70%;
+	position: absolute;
+	left: 15%;
 }
