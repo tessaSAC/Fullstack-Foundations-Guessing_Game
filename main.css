@@ -66,6 +66,17 @@ h1 {
 	text-align: center;
 }
 
+.hint {
+	width: 10%;
+	height: 10%;
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	background: transparent url(images/triangle-hot.png) center center no-repeat;
+	background-size: contain;
+	z-index: 1;
+}
+
 .eightball {
 	width: 50%;
 	height: 60%;
