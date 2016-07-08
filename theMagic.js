@@ -27,4 +27,4 @@ while (guessCount > 0) {
 
 $("reset").on("click", function() {
 	// RESET EVERYTHING
-})
+});
