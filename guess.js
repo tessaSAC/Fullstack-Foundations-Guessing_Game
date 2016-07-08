@@ -52,6 +52,12 @@ function initialize() {
 		getGuess();
 	});
 
+	$guessBox.keypress(function (event) {
+  		if (event.which == 13) {
+  			getGuess();
+  		}
+  	});
+
 	function getGuess() {
 		$guess = parseInt($("input:text").val(), 10);
 		if (!isNaN($guess) && $guess > 0 === $guess < 101) {
