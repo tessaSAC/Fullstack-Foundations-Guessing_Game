@@ -3,74 +3,101 @@
 $(function() {
 
 	// SAVE INITIAL STATE:
-	$(document).data("initialDivination", $("#yourDivination").clone(true));
+	//$(document).data("initialDivination", $("#yourDivination").clone(true));
 
-
-	var $hint = $(".hint:image"),
+	var $hint = $(".hint"),
 		$guessbox = $("#guessbox"),
 		$submit = $("#submitter"),
+		$hintbutt = $("#hinter"),
 		$reset = $("#reset-button"),
+		magicNum, message, guessArray, $guess,
+		$guessTotal, $guessCount, $guessBox, $triangle;
 
-		magicNum = Math.ceil(Math.random() * 100),
-		message,
-		guessArray = [],
-		$guess,
-		$guessTotal = 5,
-		$guessCount = $guessTotal,
+function initialize() {
+		magicNum = Math.ceil(Math.random() * 100);
+		message = "";
+		guessArray = [];
+		$guess = undefined;
+		$guessTotal = 5;
+		$guessCount = $guessTotal;
+		$guessBox = $(".guessbox #guessbox");
 		$triangle = $(".hint");
+	}
+
+	function restoreInput() {
+		$submit.fadeIn();
+		$hintbutt.fadeIn(("slow"));
+		$guessBox.removeAttr("style").removeAttr("disabled");
+		$guessBox.attr("placeholder", "intuit a number between 1 and 100");
+	}
+
+	initialize();
+
 
 	function giveMessage() {
 		alert(message);
 	}
 
+	$submit.on("click", function(event) {
+		getGuess();
+	});
+
 	function getGuess() {
-		$submit.on("click", function(){
-			$guess = +$("input:text").val();
-			$("input:text").val("");
-		});
+		$guess = +$("input:text").val();
+		$("input:text").val("");
+		alert(magicNum);
 		checkGuess();
 	}
 
 	function checkGuess() {
-		if ($guessCount <= $guessTotal && $guessCount > 0) {
+		if ($guessCount < ($guessTotal + 1)) {
 			if ($guess === magicNum) {
 				// INSERT WINNING ANIMATION!!!!!!!!!!!!!!
-				message = "A winner is you!\nMay the spirits be ever in your favour.";
-			} else if (guessArray.indexOf($guess) < 0) {
+				message = "A winner is you!\nMay the spirits be ever in your favour!";
+			} else if (guessArray.indexOf($guess) > -1) {
 				message = "You've already divined that number;\n";
 				message += "Focus your energies & try again.";
 			} else {
-				message = "Are you sure you're clairvoyant?\n";
-				message += "That is not the magic number.\n" + howClose();
-				guessArray.push($guess);
+				message = howClose();
 				$triangle.css("background-image", "url(images/traingle-cold.png)");
+				guessArray.push($guess);
+				--$guessCount;
+				$guessBox.attr("placeholder", $guessCount + " readings remain");
 			}
-		} else {
-			// INSERT LOSING ANIMATION!!!!!!!!!!!
-			message = "You are out of tries.\nTime to go back to psychic school.";
 		}
 		giveMessage();
+		if ($guessCount === 0) {
+			// INSERT LOSING ANIMATION!!!!!!!!!!!
+			$submit.fadeOut("slow");
+			$hintbutt.fadeOut("slow");
+			$guessBox.attr("placeholder", "Time to go back to psychic school.").attr("disabled", true);
+			$guessBox.css("border", "none").css("background-color", "#4A4260").css("color", "#A4A0AF");
+		}
 	}
 
 	function highLow() {
-		var howHigh = "Your guess is ";
+		var howHigh = "Have you connected to the other side?\nYour guess is ";
 		return $guess < magicNum ? howHigh += "below and " : howHigh += "above and ";
 	}
 
 	function howClose() {
 		var closeness = highLow();
 		if (Math.abs($guess - magicNum) < 10) {
-			closeness += "within 10 digits of the magic number.";
-			$triangle.css("background-image", "url(images/traingle-hot.png)");
+			closeness += "within 10 digits\n of the magic number.";
+			$triangle.css("background-image", "url('images/triangle-hot.png')");
 		} else if (Math.abs($guess - magicNum) < 20) {
-			closeness += "within 20 digits of the magic number.";
-			$triangle.css("background-image", "url(images/traingle-warm.png)");
+			closeness += "within 20 digits\n of the magic number.";
+			$triangle.css("background-image", "url(images/triangle-warm.png)");
+		} else {
+			closeness = "You sure you're clairvoyant?\n";
+			closeness += "That isn't the magic number.\n";
+			$triangle.css("background-image", "url(images/triangle-cold.png)");
 		}
-		return beginning;
+		return closeness;
 	}
 
 	function hintMe() {
-		$($submit).on("click", function(){
+		$hintbutt.on("click", function(){
 			// CREATE HINTS
 			var hintArr = [],
 				numHints = $guessTotal * 2 - guessArray.length;
@@ -85,8 +112,14 @@ $(function() {
 		});
 	}
 
+	$reset.on("click", function(event) {
+		reset();
+	});
+
 	function reset() {
-		$(document).data("initialDivination").replaceAll("#yourDivination");
+		//$(document).data("initialDivination").replaceAll("#yourDivination");
+		initialize();
+		restoreInput();
 	}
 
 });
