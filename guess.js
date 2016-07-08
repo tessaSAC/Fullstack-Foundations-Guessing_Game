@@ -10,17 +10,18 @@ $(function() {
 		$submit = $("#submitter"),
 		$hintbutt = $("#hinter"),
 		$reset = $("#reset-button"),
+		$feedback = $(".guessbox #feedbacker"),
 		magicNum, message, guessArray, $guess,
 		$guessTotal, $guessCount, $guessBox, $triangle;
 
 function initialize() {
 		magicNum = Math.ceil(Math.random() * 100);
-		message = "";
 		guessArray = [];
 		$guess = undefined;
 		$guessTotal = 5;
 		$guessCount = $guessTotal;
 		$guessBox = $(".guessbox #guessbox");
+		$feedback.text("~guess the number~").css("font-size", "100%");
 		$triangle = $(".hint");
 	}
 
@@ -35,7 +36,7 @@ function initialize() {
 
 
 	function giveMessage() {
-		alert(message);
+		$feedback.text(message).css("font-size", "75%");
 	}
 
 	$submit.on("click", function(event) {
@@ -46,7 +47,6 @@ function initialize() {
 		$guess = parseInt($("input:text").val(), 10);
 		if (!isNaN($guess) && $guess > 0 === $guess < 101) {
 			$("input:text").val("");
-			alert(magicNum);
 			checkGuess();
 		} else {
 			$guessBox.attr("placeholder", "the number is between 1 and 100");
@@ -80,7 +80,7 @@ function initialize() {
 	}
 
 	function highLow() {
-		var howHigh = "Have you connected to the other side?\nYour guess is ";
+		var howHigh = "Have you made a connection?\nYour guess is ";
 		return $guess < magicNum ? howHigh += "below and " : howHigh += "above and ";
 	}
 
@@ -100,20 +100,22 @@ function initialize() {
 		return closeness;
 	}
 
-	function hintMe() {
-		$hintbutt.on("click", function(){
-			// CREATE HINTS
-			var hintArr = [],
-				numHints = $guessTotal * 2 - guessArray.length;
+	$hintbutt.on("click", function(){
+		hintMe();
+	});
 
-			for (var i = 0; i < numHints; ++i) {
-				hintArr.push(Math.ceil(Math.random() * 100));
-			}
-			hintArr[Math.ceil(Math.random() * numHints - 1)] = magicNum;
-			message = "One of the following is the winning number:\n";
-			message += hintArr.join("  ");
-			giveMessage();
-		});
+	function hintMe() {
+		// CREATE HINTS
+		var hintArr = [],
+			numHints = $guessTotal * 2 - guessArray.length;
+
+		for (var i = 0; i < numHints; ++i) {
+			hintArr.push(Math.ceil(Math.random() * 100));
+		}
+		hintArr[Math.ceil(Math.random() * numHints - 1)] = magicNum;
+		message = "One of the following is the winning number:\n";
+		message += hintArr.join("  ");
+		giveMessage();
 	}
 
 	$reset.on("click", function(event) {

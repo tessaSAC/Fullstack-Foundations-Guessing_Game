@@ -148,6 +148,10 @@ input[type=button] {
 	top: 83%;
 	text-align: center;
 }
+.guessbox p {
+	width: 300%;
+	margin-left: -99%;
+}
 label, input {
 	display: block;
 }
