@@ -146,6 +146,7 @@ input[type=button] {
 	position: absolute;
 	left: 40%;
 	top: 83%;
+	text-align: center;
 }
 label, input {
 	display: block;
@@ -162,8 +163,13 @@ input {
 input[type=textarea] {
 	padding: 2%;
 }
-.guessbox input[type=submit] {
+.guessbox #submitter {
 	width: 70%;
 	position: absolute;
 	left: 15%;
+}
+.guessbox #hinter {
+	width: 70%;
+	position: relative;
+	margin-top: 10%;
 }

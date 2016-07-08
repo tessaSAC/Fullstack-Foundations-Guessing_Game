@@ -30,13 +30,19 @@
 					</form>
 				</div>
 				<div class="guessbox">
-					<form>
-						<label for="guessbox">~guess the number~</label>
-						<input id="guessbox" type="text">
-						<input type="submit" value="submit guess">
-					</form>
+					~guess the number~
+					<input type="text" id="guessbox" placeholder="pick a number between 1 and 100" />
+					<button type="button" id="submitter">submit guess</button>
+					<button type="button" id="hinter">hint</button>
 				</div>
 			</div>
+
+
+
+			<!-- JQUERY -->
+			<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+			<!-- JS -->
+			<script src="guess.js"></script>
 		</body>
 
 	</html>
