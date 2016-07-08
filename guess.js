@@ -16,14 +16,15 @@ $(function() {
 		guessArray = [],
 		$guess,
 		$guessTotal = 5,
-		$guessCount = $guessTotal;
+		$guessCount = $guessTotal,
+		$triangle = $(".hint");
 
 	function giveMessage() {
 		alert(message);
 	}
 
 	function getGuess() {
-		$($submit).on("click", function(){
+		$submit.on("click", function(){
 			$guess = +$("input:text").val();
 			$("input:text").val("");
 		});
@@ -33,7 +34,7 @@ $(function() {
 	function checkGuess() {
 		if ($guessCount <= $guessTotal && $guessCount > 0) {
 			if ($guess === magicNum) {
-				// WINNING ANIMATION
+				// INSERT WINNING ANIMATION!!!!!!!!!!!!!!
 				message = "A winner is you!\nMay the spirits be ever in your favour.";
 			} else if (guessArray.indexOf($guess) < 0) {
 				message = "You've already divined that number;\n";
@@ -42,8 +43,10 @@ $(function() {
 				message = "Are you sure you're clairvoyant?\n";
 				message += "That is not the magic number.\n" + howClose();
 				guessArray.push($guess);
+				$triangle.css("background-image", "url(images/traingle-cold.png)");
 			}
 		} else {
+			// INSERT LOSING ANIMATION!!!!!!!!!!!
 			message = "You are out of tries.\nTime to go back to psychic school.";
 		}
 		giveMessage();
@@ -56,10 +59,12 @@ $(function() {
 
 	function howClose() {
 		var closeness = highLow();
-		if (Math.abs($guess - magicNum) < 5) {
-			closeness += "within 5 digits of the magic number.";
-		} else if (Math.abs($guess - magicNum) < 10) {
+		if (Math.abs($guess - magicNum) < 10) {
 			closeness += "within 10 digits of the magic number.";
+			$triangle.css("background-image", "url(images/traingle-hot.png)");
+		} else if (Math.abs($guess - magicNum) < 20) {
+			closeness += "within 20 digits of the magic number.";
+			$triangle.css("background-image", "url(images/traingle-warm.png)");
 		}
 		return beginning;
 	}
