@@ -11,7 +11,7 @@ $(function() {
 		$hintbutt = $("#hinter"),
 		$reset = $("#reset-button"),
 		$feedback = $(".guessbox #feedbacker"),
-		magicNum, message, guessArray, $guess,
+		temp, magicNum, message, guessArray, $guess,
 		$guessTotal, $guessCount, $guessBox, $triangle;
 
 function initialize() {
@@ -26,17 +26,26 @@ function initialize() {
 	}
 
 	function restoreInput() {
+		temp = "none";
+		changeTriangle();
 		$submit.fadeIn();
 		$hintbutt.fadeIn(("slow"));
 		$guessBox.removeAttr("style").removeAttr("disabled");
 		$guessBox.attr("placeholder", "intuit a number between 1 and 100");
 	}
 
+	function endAnimation() {
+		$submit.fadeOut("slow");
+		$hintbutt.fadeOut("slow");
+		$guessBox.attr("disabled", true);
+		$guessBox.css("border", "none").css("background-color", "#4A4260").css("color", "#A4A0AF");
+	}
 	initialize();
 
 
 	function giveMessage() {
 		$feedback.text(message).css("font-size", "75%");
+		changeTriangle();
 	}
 
 	$submit.on("click", function(event) {
@@ -53,30 +62,33 @@ function initialize() {
 		}
 	}
 
+	function changeTriangle() {
+		$triangle.css("background", 'url("images/triangle-' + temp + '.png") center center no-repeat');
+		$triangle.css("background-size", "contain");
+	}
 	function checkGuess() {
 		if ($guessCount < ($guessTotal + 1)) {
 			if ($guess === magicNum) {
-				// INSERT WINNING ANIMATION!!!!!!!!!!!!!!
-				message = "A winner is you!\nMay the spirits be ever in your favour!";
+				endAnimation();
+				temp = "win";
+				message = "A winner is you!\nMay the spirits be ever on your side!";
 			} else if (guessArray.indexOf($guess) > -1) {
 				message = "You've already divined that number;\n";
 				message += "Focus your energies & try again.";
 			} else {
 				message = howClose();
-				$triangle.css("background-image", "url(images/traingle-cold.png)");
 				guessArray.push($guess);
 				--$guessCount;
 				$guessBox.attr("placeholder", $guessCount + " readings remain");
 			}
 		}
-		giveMessage();
 		if ($guessCount === 0) {
-			// INSERT LOSING ANIMATION!!!!!!!!!!!
-			$submit.fadeOut("slow");
-			$hintbutt.fadeOut("slow");
-			$guessBox.attr("placeholder", "Time to go back to psychic school.").attr("disabled", true);
-			$guessBox.css("border", "none").css("background-color", "#4A4260").css("color", "#A4A0AF");
+			endAnimation();
+			message = "Charlatan!";
+			temp = "lose";
+			$guessBox.attr("placeholder", "Time to go back to psychic school.");
 		}
+		giveMessage();
 	}
 
 	function highLow() {
@@ -88,14 +100,14 @@ function initialize() {
 		var closeness = highLow();
 		if (Math.abs($guess - magicNum) < 10) {
 			closeness += "within 10 digits\n of the magic number.";
-			$triangle.css("background-image", "url('images/triangle-hot.png')");
+			temp = "hot";
 		} else if (Math.abs($guess - magicNum) < 20) {
 			closeness += "within 20 digits\n of the magic number.";
-			$triangle.css("background-image", "url(images/triangle-warm.png)");
+			temp = "warm";
 		} else {
 			closeness = "You sure you're clairvoyant?\n";
 			closeness += "That isn't the magic number.\n";
-			$triangle.css("background-image", "url(images/triangle-cold.png)");
+			temp = "cold";
 		}
 		return closeness;
 	}
@@ -105,6 +117,7 @@ function initialize() {
 	});
 
 	function hintMe() {
+		$hintbutt.fadeOut("slow");
 		// CREATE HINTS
 		var hintArr = [],
 			numHints = $guessTotal * 2 - guessArray.length;
@@ -114,7 +127,7 @@ function initialize() {
 		}
 		hintArr[Math.ceil(Math.random() * numHints - 1)] = magicNum;
 		message = "One of the following is the winning number:\n";
-		message += hintArr.join("  ");
+		message += hintArr.join(", ");
 		giveMessage();
 	}
 
