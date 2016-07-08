@@ -32,7 +32,7 @@
            </div>
            <div class='buttons'>
 	           <button type='button'id='playersGuess' onclick='playAgain()' class="btn btn-lg btn-default">Play Again</button>
-	           <button type='button' id='playersGuess' onclick='hint()' class= 'btn btn-lg btn-default'>Give me a Hint</button>
+	           <button type='button' id='hintButt' onclick='hint()' class= 'btn btn-lg btn-default'>Give me a Hint</button>
            </div>
            <h3 id='guess-count'> 5 Guess Remaining </h3>
 
@@ -45,5 +45,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<script src='guess.js'></script>
+
+    <!-- CONFETTI HTML -->
+    %canvas{"id" => "confetti", "width" => "1", "height" => "1"}
+    %a{"href" => "http://iprodev.com", "target" => "_blank", "class" => "iprodev"} iprodev.com
   </body>
 </html>
