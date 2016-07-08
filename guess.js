@@ -43,10 +43,14 @@ function initialize() {
 	});
 
 	function getGuess() {
-		$guess = +$("input:text").val();
-		$("input:text").val("");
-		alert(magicNum);
-		checkGuess();
+		$guess = parseInt($("input:text").val(), 10);
+		if (!isNaN($guess) && $guess > 0 === $guess < 101) {
+			$("input:text").val("");
+			alert(magicNum);
+			checkGuess();
+		} else {
+			$guessBox.attr("placeholder", "the number is between 1 and 100");
+		}
 	}
 
 	function checkGuess() {
