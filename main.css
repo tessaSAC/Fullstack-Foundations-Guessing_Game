@@ -73,7 +73,7 @@ h1 {
 	position: absolute;
 	top: 29%;
 	left: 45%;
-	background: transparent url(images/triangle-hot.png) center center no-repeat;
+	background: transparent url() center center no-repeat;
 	background-size: contain;
 	z-index: 1;
 	direction: ltr;
