@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fullstack - Number Guessing Game</title>
+    <!-- Bootstrap -->
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<!--  -->
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+
+    <div class="site-wrapper">
+
+      <div id='image'>
+      	<img src='http://preview.fullstackacademy.com/images/fa-logo@2x.png' alt='fullstack-logo' id='fs-image'>
+      </div>
+
+            <h1 id='guess'>Guess The Number</h1>
+            <!-- <p class="lead"></p> -->
+					 <!-- <label for="playerGuess">Guess Here</label> -->
+					 <div class='main-box'>
+						 <input type="text" id='playersGuess' placeholder='Input Number 1-100' class='form-control input' onkeydown="if (event.keyCode ===13) doesNumberToGuessExist()" />
+						 <h3 id='status'></h3>
+	           <button type='button' id='playersGuess' onclick='doesNumberToGuessExist()' class="btn btn-lg btn-info">Submit Your Guess</button>
+           </div>
+           <div class='buttons'>
+	           <button type='button'id='playersGuess' onclick='playAgain()' class="btn btn-lg btn-default">Play Again</button>
+	           <button type='button' id='playersGuess' onclick='hint()' class= 'btn btn-lg btn-default'>Give me a Hint</button>
+           </div>
+           <h3 id='guess-count'> 5 Guess Remaining </h3>
+
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src='guess.js'></script>
+  </body>
+</html>
