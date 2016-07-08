@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Guessing Game!</title>
+			<link type="text/css" rel="stylesheet" href="main.css">
+			<link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+		</head>
+
+		<body>
+			<div class="header">
+				<h1>Guess the Number</h1>
+			</div>
+			<div class="hint">
+				<p>hint triangle</p>
+			</div>
+			<div class="container"
+				<div></div>
+				<div class="left-hand">
+					<p>left hand</p>
+				</div>
+				<div class="eightball">
+					<p>Magic Eight Ball</p>
+				</div>
+				<div class="right-hand">
+					<p>right hand</p>
+				</div>
+				<div class="reset-button">
+					<form>
+						<input id="reset-button" type="button" value="reset game">
+					</form>
+				</div>
+				<div class="guessbox">
+					<p id="feedbacker">~guess the number~</p>
+					<input type="text" id="guessbox" placeholder="pick a number between 1 and 100">
+					<button type="button" id="submitter">submit guess</button>
+					<button type="button" id="hinter">request hint</button>
+				</div>
+			</div>
+
+
+
+			<!-- JQUERY -->
+			<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+			<!-- JS -->
+			<script src="guess.js"></script>
+		</body>
+
+	</html>

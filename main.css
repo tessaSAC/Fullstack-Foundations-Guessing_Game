@@ -1,0 +1,179 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* Is there a base term for script fonts? */
+body {
+	background-color:  #1d1339;
+	font: normal normal 32px/38px Arizonia, Merienda, "Great Vibes", sans-serif;
+	color: #fff;
+}
+h1 {
+	font-size: 80px;
+}
+
+.container {
+	width: 100%;
+	height: 80%;
+}
+
+.header {
+	width: 100;
+	padding: 4%;
+	overflow: visible;
+	text-align: center;
+}
+
+/* Eventually change from 3 hint images to sprite? Add animation??? */
+.hint {
+	width: 10%;
+	height: 10%;
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	background: transparent url("images/triangle-none.png") center center no-repeat;
+	background-size: contain;
+	z-index: 1;
+	direction: ltr;
+	text-indent: -99999px;
+}
+
+/* Why couldn't I get following three divs to stand on the same line, esp. hands (+ originally they shared a class...)*/
+.eightball {
+	width: 50%;
+	height: 60%;
+	overflow: hidden;
+	position: absolute;
+	top: 19%;
+	left: 25%;
+	background: transparent url(images/8ball-textless.png) center center no-repeat;
+	background-size: contain;
+	direction: ltr;
+	text-indent: -99999px;
+}
+
+.left-hand {
+	position: absolute;
+	height: 87%;
+	width: 25%;
+	top: 10%;
+	left: 5%;
+	background: transparent url(images/hand-left.png) bottom center no-repeat;
+	background-size: contain;
+	color: transparent;
+}
+.right-hand {
+	position: absolute;
+	height: 87%;
+	width: 25%;
+	left: 72%;
+	background: transparent url(images/hand-right.png) center center no-repeat;
+	background-size: contain;
+	color: transparent;
+}
+
+/*
+-> In the future would like to have the below pseudostates affect an .eightball BG sprite...
+-> Why is it so difficult to set the button height???
+*/
+.reset-button {
+	width: 14%;
+	position: absolute;
+	overflow: hidden;
+	top: 65%;
+	left: 43%;
+}
+input[type=button] {
+	background: transparent url(images/reset.png) top center no-repeat;
+	background-size: 85%;
+	height: 65px;
+	border: 0;
+	color: transparent;
+}
+.reset-button:hover, .reset-button:active {
+	background: url(images/reset-hover.png) top center no-repeat;
+	background-size: 85%;
+}
+.reset-button:active {
+	background-image: url(images/reset-click-darker4.png);
+}
+
+.guessbox {
+	width: 20%;
+	height: 20%;
+	position: absolute;
+	left: 40%;
+	top: 83%;
+	text-align: center;
+}
+.guessbox p {
+	width: 300%;
+	margin-left: -99%;
+}
+label, input {
+	display: block;
+}
+label {
+	margin-bottom: 5%;
+	text-align: center;
+}
+input {
+	width: 100%;
+	margin-bottom: 4%;
+	text-align: center;
+}
+input[type=textarea] {
+	padding: 2%;
+}
+.guessbox #submitter {
+	width: 70%;
+	position: absolute;
+	left: 15%;
+}
+.guessbox #hinter {
+	width: 70%;
+	position: relative;
+	margin-top: 10%;
+}
